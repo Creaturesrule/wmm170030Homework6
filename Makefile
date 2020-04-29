@@ -11,7 +11,7 @@ LDFLAGS = -L/scratch/perkins/lib
 LDLIBS = -lcdk -lcurses
 
 # Executable Name
-EXECFILE = cdkexample
+EXECFILE = program6
 
 # Auto include all .cc files
 SOURCES := $(wildcard *.cc)
