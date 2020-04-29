@@ -15,7 +15,7 @@
 #include <sstream>
 #include <cstring>
 #include <string>
-#include<bits/stdc++.h> 
+#include <bits/stdc++.h> 
 #include "cdk.h"
 #include "stdint.h"
 
@@ -93,7 +93,6 @@ int main()
 	ifstream binInfile ("/scratch/perkins/cs3377.bin", ios::in | ios::binary);
 
 	binInfile.read((char *) myHeader, sizeof(BinaryFileHeader));
-	binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
 
 	/* Format and store the magic number for display */
  	stringstream ss;
@@ -140,14 +139,143 @@ int main()
    	* Dipslay the number of records
    	*/
 	setCDKMatrixCell(myMatrix, 1, 3, records.c_str());
+	
+	ostringstream os;
+	if (myHeader->numRecords >= 4){ // If there are 4 or more records
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+		
+		os << (int) myRecord->strLength;
+		string strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		string record = (char *) myRecord->stringBuffer;
 
+		setCDKMatrixCell(myMatrix, 2, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 2, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
+
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+
+		os << (int) myRecord->strLength;
+		strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		record = (char *) myRecord->stringBuffer;
+
+		setCDKMatrixCell(myMatrix, 3, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 3, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
+
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+
+		os << (int) myRecord->strLength;
+		strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		record = (char *) myRecord->stringBuffer;
+
+		setCDKMatrixCell(myMatrix, 4, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 4, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
+
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+
+		os << (int) myRecord->strLength;
+		strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		record = (char *) myRecord->stringBuffer;
+
+		setCDKMatrixCell(myMatrix, 5, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 5, 2, record.c_str());
+	}
+	else if (myHeader->numRecords == 3){ // If there are 3 records
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+		
+		os << (int) myRecord->strLength;
+		string strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		string record = (char *) myRecord->stringBuffer;
+
+		setCDKMatrixCell(myMatrix, 2, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 2, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
+
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+
+		os << (int) myRecord->strLength;
+		strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		record = (char *) myRecord->stringBuffer;
+
+		setCDKMatrixCell(myMatrix, 3, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 3, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
+
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+
+		os << (int) myRecord->strLength;
+		strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		record = (char *) myRecord->stringBuffer;
+
+		setCDKMatrixCell(myMatrix, 4, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 4, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
+	}
+	else if (myHeader->numRecords == 2){ // If there are 2 records
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+		
+		os << (int) myRecord->strLength;
+		string strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		string record = (char *) myRecord->stringBuffer;
+
+		setCDKMatrixCell(myMatrix, 2, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 2, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
+
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+
+		os << (int) myRecord->strLength;
+		strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		record = (char *) myRecord->stringBuffer;
+
+		setCDKMatrixCell(myMatrix, 3, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 3, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
+	}
+	else if (myHeader->numRecords == 1){ // If there is only 1 record
+		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
+		
+		os << (int) myRecord->strLength;
+		string strLen = os.str();;
+		strLen = "strlen: " + strLen;
+		string record = (char *) myRecord->stringBuffer;
+		setCDKMatrixCell(myMatrix, 2, 1, strLen.c_str());
+		setCDKMatrixCell(myMatrix, 2, 2, record.c_str());
+	}	
+	binInfile.close();
   	drawCDKMatrix(myMatrix, true);    /* required  */
 
   /* so we can see results */
   sleep (10);
 
 
-	binInfile.close();
+	
 
   // Cleanup screen
   endCDK();
