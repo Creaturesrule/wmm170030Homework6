@@ -283,9 +283,9 @@ int main()
 	binInfile.close();
   	drawCDKMatrix(myMatrix, true);    /* required  */
 
-  /* so we can see results */
-  sleep (10);
-
+  	/* wait for user input then end */
+	string end;
+	cin >> end;
 
 	
 
