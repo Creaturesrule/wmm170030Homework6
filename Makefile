@@ -1,8 +1,15 @@
 #
-# UTD CS3377 CDK Example
-# Dr. Perkins
-# stephen.perkins@utdallas.edu
+# Filename:		Makefile
+# Date:			04/28/2020
+# Author:		William Minchew
+# Email:		wmm170030@utdallas.edu
+# Version:		1.0
+# Copyright:		2020, All Rights Reserved
+# Course     CS 3377.501 Spring 20202
 #
+# Description:
+#    Makefile for program6
+#	
 
 CXX = g++
 CXXFLAGS =

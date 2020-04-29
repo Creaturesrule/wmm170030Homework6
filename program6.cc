@@ -1,9 +1,16 @@
 /*
- * Usage of CDK Matrix
+ * Filename   program6.cc
+ * Date       4/28/2020
+ * Author     William Minchew
+ * Email      wmm170030@utdallas.edu
+ * Course     CS 3377.501 Spring 2020
+ * Version    1.0
+ * Copyright  2020, All Rights Reserved
  *
- * File:   example1.cc
- * Author: Stephen Perkins
- * Email:  stephen.perkins@utdallas.edu
+ * Description
+ * 
+ *   Main .cc file for Program6. 
+ *   A program that reads in a binary file (hardcoded) and displays the information within using the CDK library
  */
 
 #include <iostream>
@@ -18,6 +25,7 @@
 #include <bits/stdc++.h> 
 #include "cdk.h"
 #include "stdint.h"
+#include "program6.h"
 
 
 #define MATRIX_WIDTH 5
@@ -257,6 +265,7 @@ int main()
 
 		os.str( std::string() );
 		os.clear();
+
 	}
 	else if (myHeader->numRecords == 1){ // If there is only 1 record
 		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
@@ -267,6 +276,9 @@ int main()
 		string record = (char *) myRecord->stringBuffer;
 		setCDKMatrixCell(myMatrix, 2, 1, strLen.c_str());
 		setCDKMatrixCell(myMatrix, 2, 2, record.c_str());
+
+		os.str( std::string() );
+		os.clear();
 	}	
 	binInfile.close();
   	drawCDKMatrix(myMatrix, true);    /* required  */
