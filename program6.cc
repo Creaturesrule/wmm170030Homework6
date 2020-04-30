@@ -153,7 +153,7 @@ int main()
 		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
 		
 		os << (int) myRecord->strLength;
-		string strLen = os.str();;
+		string strLen = os.str();
 		strLen = "strlen: " + strLen;
 		string record = (char *) myRecord->stringBuffer;
 
@@ -166,7 +166,7 @@ int main()
 		binInfile.read((char *) myRecord, sizeof(BinaryFileRecord));
 
 		os << (int) myRecord->strLength;
-		strLen = os.str();;
+		strLen = os.str();
 		strLen = "strlen: " + strLen;
 		record = (char *) myRecord->stringBuffer;
 
@@ -283,9 +283,7 @@ int main()
 	binInfile.close();
   	drawCDKMatrix(myMatrix, true);    /* required  */
 
-  	/* wait for user input then end */
-	string end;
-	cin >> end;
+	waitTillInput();
 
 	
 
