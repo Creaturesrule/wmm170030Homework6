@@ -13,3 +13,5 @@
  */
 
  using namespace std;
+ 
+int waitTillInput();
