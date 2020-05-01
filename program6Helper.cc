@@ -20,7 +20,6 @@
 #include "program6.h"
 
 int waitTillInput(){
-	string end;
-	cin >> end;
+	getchar();
 	return 0;
 }
